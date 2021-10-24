@@ -3,7 +3,7 @@ Lifespan
 
 This readthedocs contains the documentation for the Lifespan BrainChart project:
 
-* ` bioRxiv pre-print <https://www.biorxiv.org/content/10.1101/2021.06.08.447489v1>`_
+* `bioRxiv pre-print <https://www.biorxiv.org/content/10.1101/2021.06.08.447489v1>`_
 * `GNU R Shiny App <http://brainchart.io>`_
 * Peer-reviewed publication: PENDING
 
