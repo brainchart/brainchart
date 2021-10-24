@@ -30,7 +30,7 @@ An example of how to use these files with the code is shown below.
 Extracting population curves
 ------------
 
-.. code-block:: console
+.. code-block:: r
 
    source("100.common-variables.r")
    source("101.common-functions.r")
@@ -51,9 +51,9 @@ Extracting population curves
    
    
 .. image:: ../sample.png
-   :width: 200px
-   :height: 100px
-   :scale: 50 %
+   :width: 400
+   :height: 400px
+   :scale: 100 %
    :alt: alternate text
-   :align: right
+   :align: left
    
