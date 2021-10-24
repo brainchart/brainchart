@@ -13,7 +13,7 @@ This repository does not contain any of the datasets. We do not have permission 
 
 
 Check out the :doc:`usage` section for further information
-
+Check out the :doc:`scripts` section for further information
 Check out the :doc:`tutorial` section for modelling walk-through on simulated data
 
 .. note::
@@ -26,4 +26,5 @@ Contents
 .. toctree::
 
    usage
+   scripts
    tutorial
