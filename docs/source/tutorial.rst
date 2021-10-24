@@ -3,12 +3,12 @@ Tutorial
 
 This tutorial uses simulated data (as illustrated in the paper). This is generated using script ``220.simulation-omega.setup.r``. Either manually execute this script, or invoke R on the command line to execute the script. For example,:
 
-.. code-block:: rout
+.. code-block:: console
   Rscript 220.simulation-omega-setup.r
 
 
 For the following tutorial, the required functions and variables can be loaded by sourcing the following scripts:
-.. code-block:: rout
+.. code-block:: r
   source("100.common-variables.r")
   source("101.common-functions.r")
 
