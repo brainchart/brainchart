@@ -56,7 +56,7 @@ These scripts perform the substantial calculations and model fitting.
 
 - 300.variables.r
 - 301.functions.r
-    * ``Fit.Function()``:** Calls ``Extract.Wrapper()``
+    * ``Fit.Function()``: Calls ``Extract.Wrapper()``
         * ``gamlssWrapper()``: Simple wrapper around ``gamlss()`` to ensure consistent calls
         * ``Extract.Summary()``: Generate consistent summary of subset/dataset
         * ``Extract.Param()``: Create custom ``ParamObj`` (new class of object) from ``gamlss()`` output
@@ -69,7 +69,7 @@ These scripts perform the substantial calculations and model fitting.
     * ``ValidateCleanInput()``: Check dataset conforms to ``ParamObj``
     * ``Apply.Param()``: Use ``ParamObj`` to generate predictions for a dataset (calls ``ValidateCleanInput()``)
     * ``Apply.FitAndBoot()``: Calls ``Apply.Param()`` on all bootstrap replicate ``ParamObj``
-    * ``Load.Subset.Wrapper()``: Load multiple elements into ``HOLDER`` object
+    * ``Load.Subset.Wrapper()``: Load multiple elements into ``HOLDER`` object 
     * ``Calc.Expanded()``: Wrapper calling ``Ranef.MLE.Func()`` and ``Add.New.Ranefs()`` 
         * ``Find.Fitted.Levels()``: Compare ``ParamObj`` with dataset to find studies with fitted random-effects
         * ``Find.Missing.Levels()``: Compare ``ParamObj`` with dataset to find studies with missing/unknown random-effects
