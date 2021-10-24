@@ -30,8 +30,6 @@ An example of how to use these files with the code is shown below.
 Extracting population curves
 ------------
 
-To use Lumache, first install it using pip:
-
 .. code-block:: console
 
    source("100.common-variables.r")
@@ -52,7 +50,7 @@ To use Lumache, first install it using pip:
    plot( I(10000*PRED.m500.pop) ~ AgeTransformed, data=CURVE[CURVE$sex=="Female",],type="l")
    
    
-.. image:: docs/sample.png
+.. image:: ../sample.png
    :width: 200px
    :height: 100px
    :scale: 50 %
