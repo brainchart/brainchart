@@ -13,6 +13,7 @@ Script names have a three-digit prefix indicating their set (first digit) and ru
 
 Within each set, the x00 and x01 script contain common objects and functions respectively. This helps keep the code separate and clean.
 
+.. 1xx scripts: common
 1xx scripts: common
 ------------
 
@@ -31,6 +32,7 @@ These scripts are sourced in later scripts, they define common variables/objects
 Importantly, they also include a re-write of several gamlss functions to address numerical instability (these may not be necessary in a novel replication, however they are required for using our output fitted objects).
 
 
+.. 2xx scripts: data setup
 2xx scripts: data setup
 ------------
 
@@ -46,6 +48,7 @@ Import and clean the data ready for the gamlss fitting. Also, generate simulated
 
 Each data script is a custom
 
+.. 3xx scripts: 
 3xx scripts: 
 ------------
 
@@ -89,6 +92,7 @@ Main scripts, these fit the gamlss model(s), select the best (via
 BIC), perform bootstrapping, and calculate all necessary derived values.
 
 
+.. 5xx scripts: plotting
 5xx scripts: plotting
 ------------
 
