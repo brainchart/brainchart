@@ -12,9 +12,9 @@ The corresponding `GitHub <https://github.com/ucam-department-of-psychiatry/Life
 This repository does not contain any of the datasets. We do not have permission to distributed many of the studies included within the published analyses. However, many are available upon request from the original study groups; see the relevant supplementary material for details of all the studies.
 
 
-Check out the :doc:`usage` section for further information
-Check out the :doc:`scripts` section for further information
-Check out the :doc:`tutorial` section for modelling walk-through on simulated data
+Check out the :doc:`usage` section for further information        
+Check out the :doc:`scripts` section for further information           
+Check out the :doc:`tutorial` section for modelling walk-through on simulated data     
 
 .. note::
 
@@ -25,6 +25,6 @@ Contents
 
 .. toctree::
 
-   usage
-   scripts
-   tutorial
+   usage    
+   scripts  
+   tutorial    
