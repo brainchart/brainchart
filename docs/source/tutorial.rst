@@ -3,12 +3,12 @@ Tutorial
 
 This tutorial uses simulated data (as illustrated in the paper). This is generated using script ``220.simulation-omega.setup.r``. Either manually execute this script, or invoke R on the command line to execute the script. For example,:
 
-.. code-block:: rconsole
+.. code-block:: rout
   Rscript 220.simulation-omega-setup.r
 
 
 For the following tutorial, the required functions and variables can be loaded by sourcing the following scripts:
-.. code-block:: rconsole
+.. code-block:: rout
   source("100.common-variables.r")
   source("101.common-functions.r")
 
@@ -257,11 +257,10 @@ Using the derived values we can generate plots as in the paper (code not include
 
 Illustrating 50th centile population curve and 50th centile Study E specific curve (note, this is equivalent to the example output using the GMV fit object):
 
-![sample](Share/population-curve.png)
 .. image:: ../population-curve.png
    :width: 400
    :height: 400px
-   :scale: 50 %
+   :scale: 100 %
    :alt: alternate text
    :align: left
 
@@ -270,7 +269,7 @@ Illustrating the population variance (for females and males) curves:
 .. image:: ../variance-curve.png
    :width: 400
    :height: 400px
-   :scale: 50 %
+   :scale: 100 %
    :alt: alternate text
    :align: left
 
@@ -279,6 +278,6 @@ Illustrating the longitudinal IQR for CN and non-CN across studies with follow-u
 .. image:: ../iqr.png
    :width: 400
    :height: 400px
-   :scale: 50 %
+   :scale: 100 %
    :alt: alternate text
    :align: left
