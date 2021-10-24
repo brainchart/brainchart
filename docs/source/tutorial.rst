@@ -32,7 +32,8 @@ First we load a dataset, in this tutorial we will use the Wand phenotype. Using 
 We will fit a single model, ``base200.GGalt.fp.rds``, using a Generalised Gamma outcome distribution (GG) including a second-order fractional polynomial of age in the mu-component, whereas the sigma-component and nu-components do not depend on age. This model specification uses the gamlss-pacakge in-built ``fp()`` function to determine the best-fitting fractional polynomial (of the specified order).
 
 
-.. code-block:: console
+.. code-block:: r
+
   ## 310-script
   PATHS <- Create.Folders( "omega-Wand__.n0000" )
   HOLDER <- Load.Subset.Wrapper( Tag="omega-Wand__.n0000", LSubset=TRUE )
@@ -47,7 +48,8 @@ After the fitting in completed (in 12 iterations) we may inspect the fitted mode
 
 In order to properly compare models (since the ``fp()`` smoother term includes an intercept which complicates the interpretation of the main intercept, and to avoid any re-fitting of the fractional polynomial smoother, we translate the model from using the ``fp()`` smoother to a fixed transformation using ``bfp()``. This requires re-fitting the revised model as follows:
 
-.. code-block:: console
+.. code-block:: r
+
   HOLDER$MODEL <- Make.bfpNA.model.from.extract( EXTRACT$param )
   saveRDS( HOLDER$MODEL, file.path( PATHS$MODEL, "base200.GGalt.bfpNA.rds" ) )
   EXTRACT.bfp <- Extract.Wrapper( HOLDER, Fit.Full=FALSE, start.from=EXTRACT$FIT ) ## helpful to start.from, improves convergence speed [expect 5 iterations]
@@ -64,7 +66,8 @@ Using the fractional polynomial approach within with multiple components (mu, si
 
 We can readily extract the BIC for a given model, then compare across models. In this tutorial we have only fitted one model, but there are many possible models within the ``RDS/omega-Wand__.n0000/MODEL/`` folder (different outcome distributions and component specifications).
 
-.. code-block:: console
+.. code-block:: r
+
   ## 310-script
   EXTRACT.bfp$param$BIC ## compare BIC on all fitted models
 
@@ -89,7 +92,8 @@ The replicates are stratified by study and sex, to ensure balance across these t
 Note: This step is "embarresingly parallel" and should be performed using more appropriate parallel computing on high performance computing (HPC) resources (code not shown).
 
 
-.. code-block:: console
+.. code-block:: r
+
   ## 330-script (and 340-script)
   HOLDER <- Load.Subset.Wrapper( Tag="omega-Wand__.n0000", LSubset=TRUE, LModel=TRUE, LFit=TRUE )
 
@@ -120,7 +124,8 @@ Out-of-sample estimation (350-novel-script) (SI 1.8)
 We will now estimate (random-effects) parameters for out-of-sample (i.e. novel) data. In our simulated example there are two additional studies, U and V, which were excluded from the initial fitting. This can be seen in the tabulation below.
 
 
-.. code-block:: console
+.. code-block:: r
+
   ## 350-novel-script
   PRIMARY <- Load.Subset.Wrapper( Tag="omega-Wand__.n0000", LSubset=TRUE, LModel=TRUE, LFit=TRUE, LBoot=TRUE, LData=TRUE )
 
@@ -144,7 +149,8 @@ The following code block does the following:
 * Finally, this expanded fit-object is saved.
 
 
-.. code-block:: rconsole
+.. code-block:: r
+
   NOVEL$DATA.PRED <- Apply.Param(NEWData=NOVEL$DATA,
                                  FITParam=PRIMARY$FIT.EXTRACT$param,
                                  Reference.Holder=PRIMARY,
@@ -194,7 +200,8 @@ Normalised Centiles
 
 Using the ``Apply.Param()`` function with the ``Add.Normalise`` argument we apply a fit object to a dataset and obtain the centiles (``Wand.q.wre``) and normalised values (`Wand.normalised`); as well as individual-level predicted values which can be compared to the observed value.
 
-.. code-block:: console
+.. code-block:: r
+
   ## 350-derived-script
   PRIMARY <- Load.Subset.Wrapper( Tag="omega-Wand__.n0000", LSubset=TRUE, LModel=TRUE, LFit=TRUE, LBoot=TRUE, LData=TRUE )
 
@@ -211,7 +218,8 @@ Longitudinal Centiles
 The ``Make.Longitudinal()`` function determines all individuals with longitudinal follow-up, and using the output from the call to ``Apply.Param()`` above calculates longitudinal summaries (i.e. the IQR of centiles).
 
 
-.. code-block:: console
+.. code-block:: r
+
   PRIMARY$LONG.SUMMARY <- Make.Longitudinal( Holder=PRIMARY )
 
 
@@ -224,7 +232,8 @@ To generate predicted population curves we first generate a new data frame conta
 In the following code block we generate two data frames, one without study and one with the study set to "E". The former will, in the absence of a specified study, return the population level predictions. Whereas the latter will return study-specific predictions.
 
 
-.. code-block:: console
+.. code-block:: r
+
   range(PRIMARY$DATA[,"TimeTransformed"]) ## whole dataset
   range(PRIMARY$DATA[PRIMARY$DATA$Study=="E","TimeTransformed"]) ## only study E
 
@@ -249,7 +258,8 @@ Example plots
 Using the derived values we can generate plots as in the paper (code not included). The following replicate some aspects of the figures from the paper using the simulated data.
 
 
-.. code-block:: console
+.. code-block:: r
+
   RANGE <- range(PRIMARY$DATA[PRIMARY$DATA$Study=="E","TimeTransformed"])
   plot( PRED.m500.pop ~ TimeTransformed, data=subset(PRIMARY$CURVE,Grp=="Female"), type="l", ylim=c(0,2.5) )
   lines( PRED.m500.wre ~ TimeTransformed, data=subset(PRIMARY$CURVE.E,Grp=="Female"&TimeTransformed<RANGE[1]), col="red", lwd=2, lty=2 )
