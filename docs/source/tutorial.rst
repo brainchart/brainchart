@@ -1,13 +1,16 @@
 Tutorial
 =====
 
-This tutorial uses simulated data (as illustrated in the paper). This is generated using script ``220.simulation-omega.setup.r``. Either manually execute this script, or invoke R on the command line to execute the script. For example,:
+This tutorial uses simulated data (as illustrated in the paper). This is generated using script ``220.simulation-omega.setup.r``. Either manually execute this script, or invoke R on the command line to execute the script. For example:
 
-.. code-block:: console
+
+.. code-block:: r
   Rscript 220.simulation-omega-setup.r
 
 
 For the following tutorial, the required functions and variables can be loaded by sourcing the following scripts:
+
+
 .. code-block:: r
   source("100.common-variables.r")
   source("101.common-functions.r")
@@ -26,7 +29,7 @@ First we load a dataset, in this tutorial we will use the Wand phenotype. Using 
 We will fit a single model, ``base200.GGalt.fp.rds``, using a Generalised Gamma outcome distribution (GG) including a second-order fractional polynomial of age in the mu-component, whereas the sigma-component and nu-components do not depend on age. This model specification uses the gamlss-pacakge in-built ``fp()`` function to determine the best-fitting fractional polynomial (of the specified order).
 
 
-.. code-block:: rconsole
+.. code-block:: r
   ## 310-script
   PATHS <- Create.Folders( "omega-Wand__.n0000" )
   HOLDER <- Load.Subset.Wrapper( Tag="omega-Wand__.n0000", LSubset=TRUE )
