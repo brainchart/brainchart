@@ -21,6 +21,7 @@ For the following tutorial, the required functions and variables can be loaded b
 (Note: none of the above are specific to the simulated data)
 
 .. _Model fitting (310-script) (SI 1.1, SI 1.3)
+
 Model fitting (310-script) (SI 1.1, SI 1.3)
 ------------
 
@@ -53,6 +54,7 @@ In order to properly compare models (since the ``fp()`` smoother term includes a
 Note: we start the iterative model fitting at a better initial point, meaning the convergence occurs faster. We will do this for bootstrap replicates as well to reduce computation.
 
 .. _Model selection (320-script) (SI 1.3)
+
 Model selection (320-script) (SI 1.3)
 ------------
 
@@ -74,6 +76,7 @@ We can readily extract the BIC for a given model, then compare across models. In
 Our later scripts assume a single best model is selected, the last lines of code above copy (or create a link if on a system that allows such things).
 
 .. _Model Uncertainty (330-script and 340-script) (SI 1.2)
+
 Model Uncertainty (330-script and 340-script) (SI 1.2)
 ------------
 
@@ -108,6 +111,7 @@ Note: This step is "embarresingly parallel" and should be performed using more a
 With an appropriate number of bootstrap replicates we can generate bootstrap confidence intervals for the lifespan curves.
 
 .. _Out-of-sample estimation (350-novel-script) (SI 1.8)
+
 Out-of-sample estimation (350-novel-script) (SI 1.8)
 ------------
 
@@ -169,7 +173,8 @@ The following code block does the following:
 Note: The above process must be repeated for all the bootstrap replicates in order to understand the uncertainty of the out-of-sample estimates.
 
 .. _Derived values (350-derived-script) (SI 1.5, SI 1.7)
- Derived values (350-derived-script) (SI 1.5, SI 1.7)
+
+Derived values (350-derived-script) (SI 1.5, SI 1.7)
 ------------
 
 
@@ -181,6 +186,7 @@ There are three types of derived values calculated in this script:
 
 
 .. _Normalised Centiles
+
 Normalised Centiles
 ^^^^^^^^^^^^^^^^^^^
 
@@ -197,6 +203,7 @@ Using the ``Apply.Param()`` function with the ``Add.Normalise`` argument we appl
 
 
 .. _Longitudinal Centiles
+
 Longitudinal Centiles
 ^^^^^^^^^^^^^^^^^^^
 The ``Make.Longitudinal()`` function determines all individuals with longitudinal follow-up, and using the output from the call to ``Apply.Param()`` above calculates longitudinal summaries (i.e. the IQR of centiles).
@@ -207,6 +214,7 @@ The ``Make.Longitudinal()`` function determines all individuals with longitudina
 
 
 .. _Population curves
+
 Population curves
 ^^^^^^^^^^^^^^^^^^^
 To generate predicted population curves we first generate a new data frame containing the appropriate covariates.
@@ -233,6 +241,7 @@ In the following code block we generate two data frames, one without study and o
                              FITParam=PRIMARY$FIT.EXTRACT$param )
 
 .. _Example plots
+
 Example plots
 ------------
 Using the derived values we can generate plots as in the paper (code not included). The following replicate some aspects of the figures from the paper using the simulated data.
