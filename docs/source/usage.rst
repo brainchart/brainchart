@@ -1,34 +1,61 @@
 Usage
 =====
 
-.. _installation:
 
-Installation
+.. Lifespan curve estimation (and uncertainty)
+
+Lifespan curve estimation (and uncertainty)
+------------
+
+Although we cannot share the individual-level data, we are able to share the outcome of the analysis, namely the fitted curves.
+
+The following GNU R objects contain the fitted model and parameter estimates for all curves within the articles:
+
+* [BOOT_GMV.rds](Share/BOOT_GMV.rds)
+* [BOOT_sGMV.rds](Share/BOOT_sGMV.rds)
+* [BOOT_Ventricles.rds](Share/BOOT_Ventricles.rds)
+* [BOOT_WMV.rds](Share/BOOT_WMV.rds)
+* [FIT_GMV.rds](Share/FIT_GMV.rds)
+* [FIT_sGMV.rds](Share/FIT_sGMV.rds)
+* [FIT_Ventricles.rds](Share/FIT_Ventricles.rds)
+* [FIT_WMV.rds](Share/FIT_WMV.rds)
+
+The FIT files contain the point estimates, whereas the BOOT files contain the bootstrap replicates used to determine the uncertainty intervals.
+
+An example of how to use these files with the code is shown below.
+
+
+.. _Extracting population curves:
+
+Extracting population curves
 ------------
 
 To use Lumache, first install it using pip:
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   source("100.common-variables.r")
+   source("101.common-functions.r")
 
-Creating recipes
-----------------
+   source("300.variables.r")
+   source("301.functions.r")
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+   FIT <- readRDS("Share/FIT_GMV.rds")
 
-.. autofunction:: lumache.get_random_ingredients
+   POP.CURVE.LIST <- list(AgeTransformed=seq(log(90),log(365*95),length.out=2^4),sex=c("Female","Male"))
+   POP.CURVE.RAW <- do.call( what=expand.grid, args=POP.CURVE.LIST )
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
+   CURVE <- Apply.Param(NEWData=POP.CURVE.RAW, FITParam=FIT$param )
 
-.. autoexception:: lumache.InvalidKindError
+   plot( PRED.m500.pop ~ AgeTransformed, data=CURVE[CURVE$sex=="Female",],type="l")
 
-For example:
-
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
-
+   plot( I(10000*PRED.m500.pop) ~ AgeTransformed, data=CURVE[CURVE$sex=="Female",],type="l")
+   
+   
+.. image:: docs/sample.png
+   :width: 200px
+   :height: 100px
+   :scale: 50 %
+   :alt: alternate text
+   :align: right
+   
